@@ -1,6 +1,6 @@
 //////////////////////////eloquent JS exercises
 
-/////////////////////CHAPTER 2: Program Structure
+///////////////////////////////////////////////////////////////CHAPTER 2: Program Structure
 /////exercise 1 : triangle looping 
 
 var triangle ='';
@@ -26,7 +26,7 @@ for(var bottles=0; bottles<101;bottles+=1){
   }
 }
 
-/////////////////////CHAPTER 3: Functions 
+///////////////////////////////////////////////////////////////CHAPTER 3: Functions 
 /////exercise 1 : minimum 
 //parameters should be a range 
 function min(x,y){
@@ -91,7 +91,7 @@ function countChar(x,y){
 
 console.log(countChar("kakkerlak", "k"));
 
-/////////////////////CHAPTER 4: Data Structures: Objects & Arrays
+///////////////////////////////////////////////////////////////CHAPTER 4: Data Structures: Objects & Arrays
 /////exercise 1 : Sum of a Range
 var range=[];
 function createRange(start,end){
