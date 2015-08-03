@@ -90,3 +90,25 @@ function countChar(x,y){
 }
 
 console.log(countChar("kakkerlak", "k"));
+
+/////////////////////CHAPTER 4: Data Structures: Objects & Arrays
+/////exercise 1 : Sum of a Range
+var range=[];
+function createRange(start,end){
+  for(var i=start; i<=end; i+=1){
+    range.push(i);
+  }
+}
+
+function sumRange(range){
+  var sum= 0 ;
+  for(var i=0; i<=range.length-1; i+=1){
+	  sum+= range[i];
+  }
+  console.log(sum);
+}
+
+createRange(0,10);
+console.log(range);
+sumRange(range);
+
