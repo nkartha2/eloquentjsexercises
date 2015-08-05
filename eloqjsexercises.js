@@ -1,7 +1,7 @@
 //////////////////////////eloquent JS exercises
 
 ///////////////////////////////////////////////////////////////CHAPTER 2: Program Structure
-/////exercise 1 : triangle looping 
+/////////////////////////exercise 1 : triangle looping 
 
 var triangle ='';
 for(var i=0; i<8; i+=1){
@@ -13,7 +13,7 @@ for(var line = '#'; line.length<8; line+='#'){
   console.log(line);
 }
 
-/////exercise 2 : fizzbuzz
+/////////////////////////exercise 2 : fizzbuzz
 for(var bottles=0; bottles<101;bottles+=1){
   if(bottles % 3===0 && bottles % 5===0){
     console.log('FizzBuzz');
@@ -27,7 +27,7 @@ for(var bottles=0; bottles<101;bottles+=1){
 }
 
 ///////////////////////////////////////////////////////////////CHAPTER 3: Functions 
-/////exercise 1 : minimum 
+/////////////////////////exercise 1 : minimum 
 //parameters should be a range 
 function min(x,y){
   //return the minimum number 
@@ -38,7 +38,7 @@ function min(x,y){
 	}
 }
 
-/////exercise 2 : recursion
+/////////////////////////exercise 2 : recursion
 ///parameter should be a number 
 function isEven(n){
   ///number is equal to 0, number is even
@@ -57,7 +57,7 @@ function isEven(n){
 
 console.log(isEven(78));
 
-/////exercise 3a : beans
+/////////////////////////exercise 3a : beans
 var charPos;
 ////parameter is a string
 function countBs(x){
@@ -76,7 +76,7 @@ function countBs(x){
 
 console.log(countBs('BBC'));
 
-/////exercise 3b: beans
+/////////////////////////exercise 3b: beans
 /////parameters are two strings: x = total string; y= character/letter within string
 function countChar(x,y){
   var score=0;
@@ -92,23 +92,47 @@ function countChar(x,y){
 console.log(countChar("kakkerlak", "k"));
 
 ///////////////////////////////////////////////////////////////CHAPTER 4: Data Structures: Objects & Arrays
-/////exercise 1 : Sum of a Range
+/////////////////////////exercise 1 : Sum of a Range
+
+/////create an array with a range of numbers
 var range=[];
 function createRange(start,end){
   for(var i=start; i<=end; i+=1){
     range.push(i);
   }
+  return range; 
 }
+console.log(createRange(0,10));
 
+/////get the sum of the array called range
 function sumRange(range){
   var sum= 0 ;
   for(var i=0; i<=range.length-1; i+=1){
 	  sum+= range[i];
   }
-  console.log(sum);
+  return sum;
 }
 
-createRange(0,10);
-console.log(range);
-sumRange(range);
+console.log(sumRange(range));
+
+/////////////////////////exercise 1 BONUS exercise: Sum of a Range 
+
+/////create an array with a range of numbers that increments according to the step parameter 
+var rangeBonus=[]; 
+function createRangebonus(start,end,step){
+  ////if the range of numbers begins with a high number and ends with a low number (this is for negative increments)
+  if(start>end){
+    for(var i=start; i>=end; i+=step){
+      rangeBonus.push(i);
+   	 	}
+  }else{
+   	for(var i=start; i<=end; i+=step){
+      rangeBonus.push(i);
+  		}
+  	}
+  return rangeBonus; 
+  }
+
+console.log(createRangebonus(10,5,-1));
+console.log('bonus range sum is '+ sumRange(rangeBonus));
 
