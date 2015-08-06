@@ -136,3 +136,44 @@ function createRangebonus(start,end,step){
 console.log(createRangebonus(10,5,-1));
 console.log('bonus range sum is '+ sumRange(rangeBonus));
 
+/////////////////////////exercise 2: Reversing an array
+function reverseArray(range){
+  var rangeArray= [];
+  for(var i=range.length-1; i>=0; i-=1){
+    rangeArray.push(range[i]);
+  }
+	return rangeArray;
+}
+
+console.log(reverseArray(["A", "B", "C",'D']));
+// → ["D", C", "B", "A"];
+
+
+function reverseArrayInPlace(arrayrange){
+  for(var i=0; i<Math.floor(arrayrange.length/2); i++){
+    var tmp = arrayValue[i];
+    var arrayPos= arrayrange.length-1-i;
+    
+    arrayValue[i]=arrayValue[arrayPos];
+    arrayValue[arrayPos] = tmp;
+    	}
+  return arrayValue;
+}
+
+/* 
+goal: 
+vers1=[1,2,3,4,5]
+vers2=[5,4,3,2,1]
+
+problem with looping through once - why we need to loop through the first half of the array first 
+av[0]=av[4] av=5
+av[1]=av[3] av=4
+av[2]=av[2] av=3
+av[3]=av[1] av=4 - array no longer has the value of '2' saved - it has already been changed to 4
+av[4]=av[0] av=5 - array no longer has the value of '1' saved - it has already been changed to 5
+*/
+
+
+var arrayValue = [1, 2, 3, 4, 5, 6, 7, 8];
+reverseArrayInPlace(arrayValue);
+console.log(arrayValue);
