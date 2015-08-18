@@ -173,7 +173,52 @@ av[3]=av[1] av=4 - array no longer has the value of '2' saved - it has already b
 av[4]=av[0] av=5 - array no longer has the value of '1' saved - it has already been changed to 5
 */
 
-
 var arrayValue = [1, 2, 3, 4, 5, 6, 7, 8];
 reverseArrayInPlace(arrayValue);
 console.log(arrayValue);
+
+/////////////////////////exercise 3: A list
+
+function arrayToList(arrayInput){
+  var newList, 
+      tmp;
+  for(var i=arrayInput.length-1; i>=0; i-=1){
+      tmp= arrayInput[i];
+      newList={ value: tmp,
+               rest: newList
+                  }
+        }
+    return newList; 
+      }
+
+var newArray=[];
+function listToArray(newList){
+  // loop through properties within the list
+  for (var myProperty in newList){
+    ///if the property is equal to value 
+    if(myProperty=== 'value'){
+    // pull value from property value and store 
+       var arrayValue = newList[myProperty];
+    // add value to array  
+      newArray.push(arrayValue);
+      // if the property rest is an object
+       if(typeof(newList['rest'])==='object'){
+        // then perform the listToArray function on the object
+         listToArray(newList['rest']);
+        // if rest is undefined, then return the array
+        }else if(newList['rest']===undefined){
+          return newArray;
+        }
+    }
+  }
+  return newArray;
+}
+
+function prepend(plusValue, plusList){
+  var comboList; 
+    comboList= {value:plusValue,
+              rest: plusList
+              }
+  return comboList;
+}
+
