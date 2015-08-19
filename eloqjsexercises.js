@@ -222,3 +222,45 @@ function prepend(plusValue, plusList){
   return comboList;
 }
 
+//////////////////////this is my answer for the nth function but it does not work 
+function nth(paramList, position){
+  var returnValue;
+  for(var i=0; i<=position; i+=1){
+     for(var prop in paramList){
+        returnValue=paramList[prop];
+        console.log('prop '+ prop);
+        console.log('returnValue '+ returnValue);
+       if(typeof(paramList['rest'])==='object'&& position>0){
+         nth(paramList['rest']);
+       }else if(paramList['rest']===undefined){
+         return undefined;
+       }
+     return returnValue;
+     }
+  }
+}
+
+//////////////////////this is the book's answer and my notes to understand it 
+
+////creating a function named nth accepting the parameters list and n 
+////EXAMPLE: function nth({value:10, rest{value:20, rest{value:30, rest:undefined}}}, 1){
+function nth(list, n) {
+////if the list parameter is null or undefined then return undefined 
+////EXAMPLE: list is not undefined/null
+  if (!list) {
+    return undefined;
+////if n is 0 then return the value of the value property within the list 
+////this is what is returned as the final value for the given position if it is not undefined/null
+////EXAMPLE: n is not 0 
+  } else if (n == 0) {
+    return list.value;
+////this is recursion - the function is called within the function 
+////if n is not 0 and not undefined/null, then  
+  } else {
+////the parameter list is updated to the list within the rest property and n is reduced by 1. 
+////the function will be called again here until n===0
+////EXAMPLE: now parameters are {value:20, rest{..}}, 0 and run through the nth function. then n is 0 and list.value=20 which is what is returned 
+    return nth(list.rest, n - 1);
+  }
+}
+
