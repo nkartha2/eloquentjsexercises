@@ -264,3 +264,11 @@ function nth(list, n) {
   }
 }
 
+///////////////////////////////////////////////////////////////CHAPTER 5: Higher-Order Functions//////////////////////////////
+/////////////////////////exercise 1 : Flattening
+var arrays = [[1, 2, 3], [4, 5], [6]];
+console.log(arrays.reduce(function(a,b){
+		arrays= a.concat(b);
+  return arrays;
+}));
+// → [1, 2, 3, 4, 5, 6]
