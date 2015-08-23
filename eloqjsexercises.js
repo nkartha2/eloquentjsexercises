@@ -309,3 +309,39 @@ console.log(' diff '+ diff);
 //and reduce the array to one total number then divide by array's length 
 console.log('average of mother-child age difference: '+average(diff));
 //answer → 31.2
+
+/////////////////////////exercise 3: HISTORICAL LIFE EXPECTANCY 
+function average(array) {
+  function plus(a, b) { return a + b; }
+  return array.reduce(plus) / array.length;
+}
+
+var byName = {};
+ancestry.forEach(function(person) {
+  byName[person.name] = person;
+});
+
+var centuries={};
+for (var key in byName){
+/////////year that the person died
+	var diedYear=byName[key]['died'];
+/////////year that the person was born
+   	var bornYear= byName[key]['born'];
+/////////century person is apart of 
+   	var centPerPerson= Math.ceil(diedYear/100);
+/////////person's age
+   	var agePerPerson= diedYear-bornYear;
+/////////if the object property of century is undefined
+  if(centuries[centPerPerson]===undefined){
+/////////then assign value of an empty an array
+   centuries[centPerPerson]=[];
+/////////add age to array
+   centuries[centPerPerson].push(agePerPerson);
+  }else{
+/////////add age to array that is already defined 
+    centuries[centPerPerson].push(agePerPerson);
+  }
+}
+
+/////////run average function to average age per century 
+console.log(average(centuries[20]));
