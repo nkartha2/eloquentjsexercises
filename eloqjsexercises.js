@@ -265,10 +265,47 @@ function nth(list, n) {
 }
 
 ///////////////////////////////////////////////////////////////CHAPTER 5: Higher-Order Functions//////////////////////////////
-/////////////////////////exercise 1 : Flattening
+/////////////////////////exercise 1 : FLATTENING
 var arrays = [[1, 2, 3], [4, 5], [6]];
 console.log(arrays.reduce(function(a,b){
 		arrays= a.concat(b);
   return arrays;
 }));
 // → [1, 2, 3, 4, 5, 6]
+
+/////////////////////////exercise 2: MOTHER-CHILD AGE DIFFERENCE
+function average(array) {
+  function plus(a, b) { return a + b; }
+  return array.reduce(plus) / array.length;
+}
+
+var byName = {};
+ancestry.forEach(function(person) {
+  byName[person.name] = person;
+});
+
+var diff=[];
+
+for (var key in byName){
+//evaluating year that person was born
+ var childBorn=(byName[key]['born']);
+ console.log('child '+childBorn);
+ //evaluating mom's name 
+ var keyMom = byName[key]['mother'];
+ //if the mom is not undefined then 
+ if(byName[keyMom]!==undefined){
+ 	//evalute using mom's name, the year mom was born 
+      	var motherBorn=byName[keyMom]['born'];
+   		console.log('mother '+ motherBorn);
+   	//evalute the difference of the years child was born and mom was born 
+   	//and store the differences into the variable diff which is an array
+    	diff.push(childBorn-motherBorn);
+  }
+}
+
+console.log(' diff '+ diff);
+
+//use the average function to take the diff array 
+//and reduce the array to one total number then divide by array's length 
+console.log('average of mother-child age difference: '+average(diff));
+//answer → 31.2
