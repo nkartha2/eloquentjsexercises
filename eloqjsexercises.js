@@ -345,3 +345,40 @@ for (var key in byName){
 
 /////////run average function to average age per century 
 console.log(average(centuries[20]));
+
+
+/////////////////////////exercise 4: EVERY AND THEN SOME
+
+//function named every that accepts an array and function as arguments
+function every(arrayArg,test){
+//loop through the array 
+  for(var i=0; i<arrayArg.length; i++){
+//the array is accepted as an argument to the function argument (test)
+//if the function evaluates to false within the loop then return false
+    if(!test(arrayArg[i]))
+       return false;
+  		}
+//if the array is looped through and never false, then return true 
+   return true;
+    }
+
+//function named some that accepts an array and function as arguments
+function some(arrayArg,test){
+//loop through the array 
+  for(var i=0; i<arrayArg.length; i++){
+//if the function ever evaluates to true within the loop then return true
+    if(test(arrayArg[i]))
+       return true;
+  		}
+  //if the function never evaluates as true, then return false
+   return false;
+    }
+
+//console.log(every([NaN, NaN, NaN], isNaN));
+// → true
+//console.log(every([NaN, NaN, 4], isNaN));
+// → false
+//console.log(some([NaN, 3, 4], isNaN));
+// → true
+console.log(some([2, 3, 4], isNaN));
+// → false
