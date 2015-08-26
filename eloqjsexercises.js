@@ -382,3 +382,28 @@ function some(arrayArg,test){
 // → true
 console.log(some([2, 3, 4], isNaN));
 // → false
+
+///////////////////////////////////////////////////////////////CHAPTER 6: The Secret Life of Objects//////////////////////////////
+
+/////////////////////////exercise 1: A VECTOR TYPE
+function Vector(x,y){
+  this.x=x;
+  this.y=y;
+}
+
+Vector.prototype.plus= function(vector){
+  this.x += vector.x;
+  this.y +=	vector.y;
+  return new Vector(this.x, this.y);
+}
+
+Vector.prototype.minus= function(vector){
+  this.x-=vector.x;
+  this.y-=vector.y;
+  return new Vector(this.x, this.y);
+}
+	
+console.log(new Vector(1, 2).plus(new Vector(2, 3)));
+// → Vector{x: 3, y: 5}
+console.log(new Vector(1, 2).minus(new Vector(2, 3)));
+// → Vector{x: -1, y: -1}
