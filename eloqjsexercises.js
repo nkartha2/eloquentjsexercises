@@ -407,3 +407,14 @@ console.log(new Vector(1, 2).plus(new Vector(2, 3)));
 // → Vector{x: 3, y: 5}
 console.log(new Vector(1, 2).minus(new Vector(2, 3)));
 // → Vector{x: -1, y: -1}
+
+//getter 
+//define property for Vector prototype called length 
+Object.defineProperty(Vector.prototype, "length", {
+///define get method using Pythagorean theorem to find the length of the vector 
+	get:function(){return Math.sqrt(this.x * this.x + this.y * this.y);}
+})
+
+//test 
+console.log(new Vector(3, 4).length);
+// → 5
