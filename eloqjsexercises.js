@@ -264,6 +264,37 @@ function nth(list, n) {
   }
 }
 
+/////////////////////////exercise 4: Deep Comparison 
+//function takes x and y values
+function deepEqual(x, y){
+  //console.log('x '+x+'y '+y);
+//if x equals y in value and typeof then return true
+  if(x===y){
+    return true;
+//if x and y are both objects then
+  }else if (typeof(x)==="object" && typeof(y)==="object"){
+    // x = {here: "an", abhi: "neely"}
+    // y = {here: "an", abhi: "neely"}
+//for loop through the properties and values of x and y (property names and values should be the same if they are equal)
+    for(var key in x) {
+      x_value = x[key];
+      y_value = y[key];
+      //console.log('xvalue '+x_value +'yvalue '+ y_value);
+////recursive function to see if the values inside the object are objects and equal and will return true and false
+      return deepEqual(x_value, y_value);
+    }
+  } else {
+    return false;
+  }
+}
+var obj = {here: {is: "an"}, object: 2};
+console.log(deepEqual(obj, obj));
+// → true
+console.log(deepEqual(obj, {here: 1, object: 2}));
+// → false
+console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
+// → true
+
 ///////////////////////////////////////////////////////////////CHAPTER 5: Higher-Order Functions//////////////////////////////
 /////////////////////////exercise 1 : FLATTENING
 var arrays = [[1, 2, 3], [4, 5], [6]];
