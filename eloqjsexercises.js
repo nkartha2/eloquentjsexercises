@@ -341,6 +341,46 @@ console.log(' diff '+ diff);
 console.log('average of mother-child age difference: '+average(diff));
 //answer → 31.2
 
+/////////////////////////exercise 2: MOTHER-CHILD AGE DIFFERENCE-----REWRITTEN WITH HIGH ORDER FUNCTIONS
+///filter ancestry array   
+var filteredAncestry = ancestry.filter(function(person){
+  //console.log(person);
+//to not include people with undefined mothers from the filteredAncestry array
+  if(person['mother']!==null){
+    return true;
+  } else {
+    return false;
+  }
+});
+
+//used map method to get 
+var diffAge= filteredAncestry.map(function(obj){
+//birth year of person 
+  var childBorn= obj['born'];
+//mother's name
+  var momName = obj['mother'];
+//go through byName object to find mother's birth year only if that mother has an object 
+  if(byName[momName]!==undefined){
+   var momBorn= byName[momName]['born'];
+//find the difference between person's birth year and mom's birthyear 
+  	return childBorn- momBorn;
+  }
+});
+
+///filter through diffAge 
+var diffAgefiltered= diffAge.filter(function(diffval){
+///to remove people with had an undefined birthyear 
+  if(diffval===undefined){
+    return false;
+  }else{
+    return true;
+  }
+});
+
+console.log(diffAge);
+///average of final diffAgefiltered array 
+console.log('average of mother-child age difference: '+average(diffAgefiltered));
+// → 31.2
 /////////////////////////exercise 3: HISTORICAL LIFE EXPECTANCY 
 function average(array) {
   function plus(a, b) { return a + b; }
