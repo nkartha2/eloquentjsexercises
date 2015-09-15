@@ -417,7 +417,29 @@ for (var key in byName){
 /////////run average function to average age per century 
 console.log(average(centuries[20]));
 
+/////////////////////////exercise 3:  HISTORICAL LIFE EXPECTANCY-----REWRITTEN WITH HIGH ORDER FUNCTIONS
+var groupbyCentury={};
 
+ancestry.forEach(function(person){
+   var age= person['died']-person['born'];
+  // console.log(age);
+   var cent=Math.ceil(person['died']/100);
+ 	if(groupbyCentury[cent]===undefined){
+/////////then assign value of an empty an array
+   groupbyCentury[cent]=[];
+/////////add age to array
+   groupbyCentury[cent].push(age);
+  }else{
+/////////add age to array that is already defined 
+    groupbyCentury[cent].push(age);
+  }
+});
+
+for(var key in groupbyCentury){
+  groupbyCentury[key]=average(groupbyCentury[key]);
+}
+
+console.log(groupbyCentury);
 /////////////////////////exercise 4: EVERY AND THEN SOME
 
 //function named every that accepts an array and function as arguments
