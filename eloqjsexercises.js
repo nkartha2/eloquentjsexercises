@@ -511,3 +511,22 @@ Object.defineProperty(Vector.prototype, "length", {
 //test 
 console.log(new Vector(3, 4).length);
 // → 5
+
+//example in book LAYING OUT A TABLE 
+
+//function accepting rows argument
+	//rows is an array of arrays where each array is a row
+function rowHeights(rows) {
+//map goes into the outer array, each inner array becomes "row" argument
+  return rows.map(function(row) {
+//it takes the values of the inner array
+  //returns the reduced row value with max and cell as arguments
+    return row.reduce(function(max, cell) {
+ //returns the higher number between max
+      //(max = 0 at first, then max= previous cell.minHeight)
+      //until one single value is returned which is the maximum cell height
+      return Math.max(max, cell.minHeight());
+    }, 0);
+  });
+}
+
