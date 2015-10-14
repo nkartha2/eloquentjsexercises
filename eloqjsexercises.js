@@ -514,19 +514,42 @@ console.log(new Vector(3, 4).length);
 
 //example in book LAYING OUT A TABLE 
 
+[
+	[name,height, country]
+	,[Kilimanjaro,5895,Tanzania]
+	,[Everest,8848, Nepal]
+	,[Mount Fuji,3776, Japan]
+	,[Mont Blanc,4808, Italy/France]
+	,[Vaalserberg,323, Netherlands]
+	,[Denali, 6168, United States]
+	,[Popocatepetl,5465,Mexico]
+]
 //function accepting rows argument
 	//rows is an array of arrays where each array is a row
 function rowHeights(rows) {
 //map goes into the outer array, each inner array becomes "row" argument
   return rows.map(function(row) {
 //it takes the values of the inner array
-  //returns the reduced row value with max and cell as arguments
+//reduce takes a callback function (runs on every value of the array) as an argument and 0 in this case 
+	//the callback function takes arguments max & cell 
     return row.reduce(function(max, cell) {
  //returns the higher number between max
-      //(max = 0 at first, then max= previous cell.minHeight)
+      //max = 0 at first
+      //after one round, max= previous cell.minHeight - minHeight is a function previously defined
       //until one single value is returned which is the maximum cell height
       return Math.max(max, cell.minHeight());
     }, 0);
   });
 }
 
+//function accepting rows as argument
+function colWidths(rows) {
+////the underscore arg is not used
+//colWidths builds up an array with one element for every column index
+  return rows[0].map(function(_, i) {
+////reduce rows 
+    return rows.reduce(function(max, row) {
+      return Math.max(max, row[i].minWidth());
+    }, 0);
+  });
+}
