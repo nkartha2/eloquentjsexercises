@@ -553,3 +553,30 @@ function colWidths(rows) {
     }, 0);
   });
 }
+
+//function to draw the tables taking rows 
+function drawTable(rows) {
+///max row height is saved to heights variable 
+  var heights = rowHeights(rows);
+///max width of colwidth saved to widths variable 
+  var widths = colWidths(rows);
+ 
+ //function drawLine that takes blocks and linenumber 
+ function drawLine(blocks, lineNo) {
+ //function drawLine that takes blocks and linenumber 
+    return blocks.map(function(block) {
+      return block[lineNo];
+    }).join(" ");
+  }
+
+  function drawRow(row, rowNum) {
+    var blocks = row.map(function(cell, colNum) {
+      return cell.draw(widths[colNum], heights[rowNum]);
+    });
+    return blocks[0].map(function(_, lineNo) {
+      return drawLine(blocks, lineNo);
+    }).join("\n");
+  }
+
+  return rows.map(drawRow).join("\n");
+}
