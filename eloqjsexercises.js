@@ -515,14 +515,14 @@ console.log(new Vector(3, 4).length);
 //example in book LAYING OUT A TABLE 
 
 [
-	[name,height, country]
-	,[Kilimanjaro,5895,Tanzania]
-	,[Everest,8848, Nepal]
-	,[Mount Fuji,3776, Japan]
-	,[Mont Blanc,4808, Italy/France]
-	,[Vaalserberg,323, Netherlands]
-	,[Denali, 6168, United States]
-	,[Popocatepetl,5465,Mexico]
+	['name','height', 'country']
+	,['Kilimanjaro','5895','Tanzania']
+	,['Everest','8848', 'Nepal']
+	,['Mount Fuji','3776', 'Japan']
+	,['Mont Blanc','4808', 'Italy/France']
+	,['Vaalserberg','323', 'Netherlands']
+	,['Denali', '6168', 'United States']
+	,['Popocatepetl','5465','Mexico']
 ]
 //function accepting rows argument
 	//rows is an array of arrays where each array is a row
@@ -560,29 +560,39 @@ function drawTable(rows) {
   var heights = rowHeights(rows);
 ///max width of colwidth saved to widths variable 
   var widths = colWidths(rows);
-
- 
- 
  //function drawLine that takes blocks and linenumber as arguments 
- function drawLine(blocks, lineNo) {
- //first converts the cell objects in the row to blocks 
+ 	 //extracts lines that should appear next to each other from an array of blocks and joins them with a space 
+ 	 //character to create a one-character gap between the table’s columns.
+ 	function drawLine(blocks, lineNo) {
+ 	//first converts the cell objects in the row to blocks 
  	//blocks are arrays of strings representing the content of the cells, split by line 
-    return blocks.map(function(block) {
-      return block[lineNo];
+    		return blocks.map(function(block) {
+      		return block[lineNo];
       ///strings joined together with a space 
-    }).join(" ");
-  }
-  
-  function drawRow(row, rowNum) {
+    		}).join(" ");
+  	}
+  	function drawRow(row, rowNum) {
     //The second call to map in drawRow builds up this output line by line by mapping over the lines in the 
     	//leftmost block and, for each of those, collecting a line that spans the full width of the table.
-    var blocks = row.map(function(cell, colNum) {
-      return cell.draw(widths[colNum], heights[rowNum]);
-    });
-    return blocks[0].map(function(_, lineNo) {
-      return drawLine(blocks, lineNo);
-    }).join("\n");
+    		var blocks = row.map(function(cell, colNum) {
+      		return cell.draw(widths[colNum], heights[rowNum]);
+    		});
+    	
+    	return blocks[0].map(function(_, lineNo) {
+      	return drawLine(blocks, lineNo);
+    	}).join("\n");
   }
-
+  //joining rows together with a new line 
   return rows.map(drawRow).join("\n");
+}
+
+//repeat function that takes the strings and times 
+function repeat(string, times) {
+//start with an empty string
+  var result = "";
+//loop until one less the number of times
+  for (var i = 0; i < times; i++)
+//each time loop runs, add string to empty string 
+    result += string;
+  return result;
 }
