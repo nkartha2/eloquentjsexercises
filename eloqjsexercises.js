@@ -554,22 +554,28 @@ function colWidths(rows) {
   });
 }
 
-//function to draw the tables taking rows 
+//function to draw the tables taking rows array as argument 
 function drawTable(rows) {
 ///max row height is saved to heights variable 
   var heights = rowHeights(rows);
 ///max width of colwidth saved to widths variable 
   var widths = colWidths(rows);
+
  
- //function drawLine that takes blocks and linenumber 
+ 
+ //function drawLine that takes blocks and linenumber as arguments 
  function drawLine(blocks, lineNo) {
- //function drawLine that takes blocks and linenumber 
+ //first converts the cell objects in the row to blocks 
+ 	//blocks are arrays of strings representing the content of the cells, split by line 
     return blocks.map(function(block) {
       return block[lineNo];
+      ///strings joined together with a space 
     }).join(" ");
   }
-
+  
   function drawRow(row, rowNum) {
+    //The second call to map in drawRow builds up this output line by line by mapping over the lines in the 
+    	//leftmost block and, for each of those, collecting a line that spans the full width of the table.
     var blocks = row.map(function(cell, colNum) {
       return cell.draw(widths[colNum], heights[rowNum]);
     });
