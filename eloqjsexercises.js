@@ -596,3 +596,10 @@ function repeat(string, times) {
     result += string;
   return result;
 }
+
+//function text cell accepting text 
+function TextCell(text){
+//take this text entered into the program
+//split the text with a new line
+     this.text = text.split("/n");
+}
