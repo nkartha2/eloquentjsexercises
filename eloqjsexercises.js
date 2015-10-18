@@ -603,3 +603,13 @@ function TextCell(text){
 //split the text with a new line
      this.text = text.split("/n");
 }
+//assigns function to prototype of textcell minwidth 
+TextCell.prototype.minWidth = function() {
+ //return this text after each is reduced function on each element of the array 
+ //taking width and line as arguments
+ ////initial value 0 
+  return this.text.reduce(function(width, line) {
+  //return the larger number between width and the length of each line 
+    return Math.max(width, line.length);
+  }, 0);
+};
