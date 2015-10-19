@@ -613,3 +613,19 @@ TextCell.prototype.minWidth = function() {
     return Math.max(width, line.length);
   }, 0);
 };
+//assigning min height to text cell's prototype 
+	//this way all cells will have a default minheight
+TextCell.prototype.minHeight = function() {
+	//the length of text is assigned to the minHeight
+  return this.text.length;
+};
+//assigning function to prototype draw with width and height as arguments
+TextCell.prototype.draw = function(width, height) {
+//empty array result
+  var result = [];
+  for (var i = 0; i < height; i++) {
+    var line = this.text[i] || "";
+    result.push(line + repeat(" ", width - line.length));
+  }
+  return result;
+};
