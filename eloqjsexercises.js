@@ -624,7 +624,9 @@ TextCell.prototype.draw = function(width, height) {
 //empty array result
   var result = [];
   for (var i = 0; i < height; i++) {
+//add to line from each element of the text array 
     var line = this.text[i] || "";
+//push to result with line 
     result.push(line + repeat(" ", width - line.length));
   }
   return result;
