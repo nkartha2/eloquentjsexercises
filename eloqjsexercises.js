@@ -626,8 +626,32 @@ TextCell.prototype.draw = function(width, height) {
   for (var i = 0; i < height; i++) {
 //add to line from each element of the text array 
     var line = this.text[i] || "";
-//push to result with line 
+//push line to result array and add space width minus line.length
     result.push(line + repeat(" ", width - line.length));
   }
   return result;
 };
+
+//rows array 
+var rows = [];
+for (var i = 0; i < 5; i++) {
+//single row array
+   var row = [];
+   //inner loop 
+   for (var j = 0; j < 5; j++) {
+   //if the index of j plus i is divisible by 2 
+     if ((j + i) % 2 == 0)
+     //then push to individual row array the constructor textCell 
+       row.push(new TextCell("##"));
+    //if j+i is not divisble by 2
+     else
+     //then push to row constructor Textcell with space 
+       row.push(new TextCell("  "));
+   }
+   //then add the individual row array to the rows array
+   rows.push(row);
+}
+//log drawTable function taking the completed rows array as argument
+console.log(drawTable(rows));
+
+
