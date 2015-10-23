@@ -654,4 +654,20 @@ for (var i = 0; i < 5; i++) {
 //log drawTable function taking the completed rows array as argument
 console.log(drawTable(rows));
 
-
+//function underlinedcell that takes inner as an argument 
+function UnderlinedCell(inner) {
+//takes this argument and equates it to inner
+  this.inner = inner;
+};
+//assigns function to underlinedcell prototype minwidth property  
+UnderlinedCell.prototype.minWidth = function() {
+//returns the element's inner property minwidth function
+  return this.inner.minWidth();
+};
+UnderlinedCell.prototype.minHeight = function() {
+  return this.inner.minHeight() + 1;
+};
+UnderlinedCell.prototype.draw = function(width, height) {
+  return this.inner.draw(width, height - 1)
+    .concat([repeat("-", width)]);
+};
