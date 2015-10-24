@@ -664,10 +664,15 @@ UnderlinedCell.prototype.minWidth = function() {
 //returns the element's inner property minwidth function
   return this.inner.minWidth();
 };
+//assigns function to underlinedcell prototype minHeight property  
 UnderlinedCell.prototype.minHeight = function() {
+//return this.inner.minHeight
   return this.inner.minHeight() + 1;
 };
+//assigns function with width and height as arguments to underlinedcell prototype draw  
 UnderlinedCell.prototype.draw = function(width, height) {
+//return this innner draw with width and height 
   return this.inner.draw(width, height - 1)
+//concat with a space and width variable 
     .concat([repeat("-", width)]);
 };
