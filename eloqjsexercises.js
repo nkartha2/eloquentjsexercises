@@ -676,3 +676,18 @@ UnderlinedCell.prototype.draw = function(width, height) {
 //concat with a space and width variable 
     .concat([repeat("-", width)]);
 };
+
+// datatable function taking data argument
+function dataTable(data) {
+// keys variable holds ennumberable properties of the first object within data as an array 
+  var keys = Object.keys(data[0]);
+  var headers = keys.map(function(name) {
+    return new UnderlinedCell(new TextCell(name));
+  });
+  var body = data.map(function(row) {
+    return keys.map(function(name) {
+      return new TextCell(String(row[name]));
+    });
+  });
+  return [headers].concat(body);
+}
