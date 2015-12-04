@@ -679,8 +679,9 @@ UnderlinedCell.prototype.draw = function(width, height) {
 
 // datatable function taking data argument
 function dataTable(data) {
-// keys variable holds ennumberable properties of the first object within data as an array 
+  // keys variable holds ennumberable properties of the first object within data as an array 
   var keys = Object.keys(data[0]);
+  //headers = keys array is mapped with function that takes name arg
   var headers = keys.map(function(name) {
     return new UnderlinedCell(new TextCell(name));
   });
