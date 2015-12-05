@@ -683,6 +683,7 @@ function dataTable(data) {
   var keys = Object.keys(data[0]);
   //headers = keys array is mapped with function that takes name arg
   var headers = keys.map(function(name) {
+    // return underlined cell with argument textcell function with name arg
     return new UnderlinedCell(new TextCell(name));
   });
   var body = data.map(function(row) {
