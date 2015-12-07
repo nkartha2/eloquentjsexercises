@@ -512,7 +512,7 @@ Object.defineProperty(Vector.prototype, "length", {
 console.log(new Vector(3, 4).length);
 // → 5
 
-//example in book LAYING OUT A TABLE 
+////////////example in book LAYING OUT A TABLE 
 
 [
 	['name','height', 'country']
@@ -531,10 +531,11 @@ function rowHeights(rows) {
   return rows.map(function(row) {
 //it takes the values of the inner array
 //reduce takes a callback function (runs on every value of the array) as an argument and 0 in this case 
+//callback function is a function where you can have an argument that is a function 
 	//the callback function takes arguments max & cell 
     return row.reduce(function(max, cell) {
  //returns the higher number between max
-      //max = 0 at first
+      //max = 0 at first because the reduce method in javascript uses the second argument (declared on line 542) as the initial value for the first argument of the callback function (max)
       //after one round, max= previous cell.minHeight - minHeight is a function previously defined
       //until one single value is returned which is the maximum cell height
       return Math.max(max, cell.minHeight());
