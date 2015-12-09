@@ -547,10 +547,12 @@ function rowHeights(rows) {
 function colWidths(rows) {
 ////the underscore arg is not used
 //colWidths builds up an array with one element for every column index
+//only takes first row because every row will have the same number of columns (which is 3)
   return rows[0].map(function(_, i) {
-////reduce rows 
+    ////reduce rows 
     return rows.reduce(function(max, row) {
-      return Math.max(max, row[i].minWidth());
+  	//by returning the higher number of min width of a row
+     	return Math.max(max, row[i].minWidth());
     }, 0);
   });
 }
