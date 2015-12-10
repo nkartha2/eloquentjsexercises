@@ -524,6 +524,12 @@ console.log(new Vector(3, 4).length);
 	,['Denali', '6168', 'United States']
 	,['Popocatepetl','5465','Mexico']
 ]
+
+//Interface 
+	//minHeight() returns a number indicating the minimum height this cell requires (in lines).
+	//minWidth() returns a number indicating this cell’s minimum width (in characters).
+	//draw(width, height) returns an array of length height, which contains a series of strings that are each width characters wide. This represents the content of the cell.
+
 //function accepting rows argument
 	//rows is an array of arrays where each array is a row
 function rowHeights(rows) {
@@ -565,20 +571,23 @@ function drawTable(rows) {
   var widths = colWidths(rows);
  //function drawLine that takes blocks and linenumber as arguments 
  	 //extracts lines that should appear next to each other from an array of blocks and joins them with a space 
- 	 //character to create a one-character gap between the table’s columns.
+ 	 // to create a one-character gap between the table’s columns.
  	function drawLine(blocks, lineNo) {
  	//first converts the cell objects in the row to blocks 
  	//blocks are arrays of strings representing the content of the cells, split by line 
     		return blocks.map(function(block) {
-      		return block[lineNo];
+      			return block[lineNo];
       ///strings joined together with a space 
     		}).join(" ");
   	}
+  	//draw row function that accepts row and row number 
   	function drawRow(row, rowNum) {
     //The second call to map in drawRow builds up this output line by line by mapping over the lines in the 
     	//leftmost block and, for each of those, collecting a line that spans the full width of the table.
+    		//maps through row with each cell and colulm number 
     		var blocks = row.map(function(cell, colNum) {
-      		return cell.draw(widths[colNum], heights[rowNum]);
+    			//return call draw method on cell 
+      			return cell.draw(widths[colNum], heights[rowNum]);
     		});
     	
     	return blocks[0].map(function(_, lineNo) {
