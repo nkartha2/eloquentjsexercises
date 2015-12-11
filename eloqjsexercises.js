@@ -584,12 +584,12 @@ function drawTable(rows) {
   	function drawRow(row, rowNum) {
     //The second call to map in drawRow builds up this output line by line by mapping over the lines in the 
     	//leftmost block and, for each of those, collecting a line that spans the full width of the table.
-    		//maps through row with each cell and colulm number 
+    		//maps through row with each cell and colum number 
     		var blocks = row.map(function(cell, colNum) {
-    			//return call draw method on cell 
+    		//draw(width, height) returns an array of length height, which contains a series of strings that are each width characters wide. This represents the content of the cell.
       			return cell.draw(widths[colNum], heights[rowNum]);
     		});
-    	
+    	//blocks is an array. map over each block array element 
     	return blocks[0].map(function(_, lineNo) {
       	return drawLine(blocks, lineNo);
     	}).join("\n");
