@@ -626,6 +626,7 @@ TextCell.prototype.minWidth = function() {
   }, 0);
 };
 //assigning min height to text cell's prototype 
+
 	//this way all cells will have a default minheight
 TextCell.prototype.minHeight = function() {
 	//the length of text is assigned to the minHeight
