@@ -598,7 +598,7 @@ function drawTable(rows) {
   return rows.map(drawRow).join("\n");
 }
 
-//repeat function that takes the strings and times 
+//helper function: repeat function that takes the strings and times 
 function repeat(string, times) {
 //start with an empty string
   var result = "";
@@ -612,7 +612,7 @@ function repeat(string, times) {
 //function text cell accepting text 
 function TextCell(text){
 //take this text entered into the program
-//split the text with a new line
+//splits the string into an array of lines 
      this.text = text.split("/n");
 }
 //assigns function to prototype of textcell minwidth 
@@ -645,7 +645,7 @@ TextCell.prototype.draw = function(width, height) {
   return result;
 };
 
-//rows array 
+//building a 5 by 5 checkerboard 
 var rows = [];
 for (var i = 0; i < 5; i++) {
 //single row array
@@ -706,3 +706,38 @@ function dataTable(data) {
   });
   return [headers].concat(body);
 }
+
+//exercise 2: Another Cell 
+//Defining constructor that takes inner, width, and height as args
+function StretchCell(inner, width, height) {
+	//takes inner and for the new object has inner property = inner
+	this.inner = inner;
+  	this.width = width;
+  	this.height = height;
+}
+
+//The minWidth property of the prototype of StretchCell is equal to a function where
+StretchCell.prototype.minWidth = function() {
+	//returns maximum between the object width and the inner object (where min width is run on the object)
+	return Math.max(this.width, this.inner.minWidth());
+};
+
+//The minHeight property of the prototype of StretchCell is equal to a function where
+StretchCell.prototype.minHeight = function() {
+	//returns max of the objects height and inner object's height (where method minheight is used on inner object)
+  	return Math.max(this.height, this.inner.minHeight());
+};
+
+//The draw property of the prototype of StretchCell is equal to a function that takes width and height
+StretchCell.prototype.draw = function(width, height) {
+	//returns object.innerproperty.draw method with width and height 
+	return this.inner.draw(width, height);
+};
+
+var sc = new StretchCell(new TextCell("abc"), 1, 2);
+console.log(sc.minWidth());
+// → 3
+console.log(sc.minHeight());
+// → 2
+console.log(sc.draw(3, 2));
+// → ["abc", "   "]
