@@ -738,6 +738,25 @@ var sc = new StretchCell(new TextCell("abc"), 1, 2);
 console.log(sc.minWidth());
 // → 3
 console.log(sc.minHeight());
+
+
 // → 2
 console.log(sc.draw(3, 2));
 // → ["abc", "   "]
+
+///exercise 3: Sequence Interface
+function ArraySeq(array){
+  for(var i=0; i++; i<= array.length-1){
+     console.log(array[i]);
+  }
+}
+
+logFive(new ArraySeq([1, 2]));
+// → 1
+// → 2
+logFive(new RangeSeq(100, 1000));
+// → 100
+// → 101
+// → 102
+// → 103
+// → 104
