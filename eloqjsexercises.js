@@ -744,15 +744,17 @@ console.log(sc.draw(3, 2));
 // → ["abc", "   "]
 
 ///exercise 3: Sequence Interface
-var ArraySeq= {
-  length: a.length-1
-  ,b: function(array){
-      for(var i=0; i++; i<= array.length-1){
-		return b = array[i];
-      }
-	}
-}    
+function ArraySeq(array){
+  for(var i=0; i++; i<=array.length-1){
+    var Obj = {
+     	value: array[i]
+    }
+  }
+}
 
+function logFive(arrayseq){
+  console.log(arrayseq);
+}  
 
 logFive(new ArraySeq([1, 2]));
 // → 1
