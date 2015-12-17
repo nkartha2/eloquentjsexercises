@@ -743,13 +743,28 @@ console.log(sc.minHeight());
 console.log(sc.draw(3, 2));
 // → ["abc", "   "]
 
+//constructor exercises 
+function Abhi(hi) {
+  this.speak = hi;
+}
+
+function Mani(array) {
+  this.first = array[0];
+  this.second = array[1];
+}
+
+
+neely = new Abhi('boo');
+console.log('Neely says '+ neely.speak);
+
+anand = new Mani([1,2]);
+console.log(anand.first, anand.second);
+
 ///exercise 3: Sequence Interface
-var Obj; 
 function ArraySeq(array){
-		for(var i=0; i++; i<=array.length-1){
-    			Obj = {
-     				value: array[i]
-    		}
+	array: this.array;
+	for(var i=0;  i++; i<= array.length-1){
+		array.
 	}
 }
 
