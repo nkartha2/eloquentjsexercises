@@ -761,12 +761,12 @@ anand = new Mani([1,2]);
 console.log(anand.first, anand.second);
 
 ///exercise 3: Sequence Interface
-function ArraySeq(array){
-	array: this.array;
-	for(var i=0;  i++; i<= array.length-1){
-		array.
-	}
+function ArraySeq(array) {
+  for(var i=0; i++; i<= array.length-1) {
+    this.array[i] = array[i];
+  }
 }
+
 
 function logFive(arrayseq){
   console.log(arrayseq);
