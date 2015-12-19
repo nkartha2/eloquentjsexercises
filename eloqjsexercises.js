@@ -753,7 +753,6 @@ function Mani(array) {
   this.second = array[1];
 }
 
-
 neely = new Abhi('boo');
 console.log('Neely says '+ neely.speak);
 
@@ -761,13 +760,14 @@ anand = new Mani([1,2]);
 console.log(anand.first, anand.second);
 
 ///exercise 3: Sequence Interface
+var arrayValue; 
+
 function ArraySeq(array) {
+ return arrayValue = 
   for(var i=0; i++; i<= array.length-1) {
     this.array[i] = array[i];
   }
 }
-
-
 function logFive(arrayseq){
   console.log(arrayseq);
 }  
